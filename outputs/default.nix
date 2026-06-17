@@ -25,5 +25,8 @@ inputs.flake-parts.lib.mkFlake { inherit inputs; } {
           ;
       };
     };
-  flake.functions = functions;
+  flake = {
+    inherit functions;
+    nixosModules = import ./modules { inherit lib; };
+  };
 }

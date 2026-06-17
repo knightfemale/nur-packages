@@ -16,9 +16,7 @@ let
     let
       # 读取目录内容, 筛选出子目录名列表
       content = builtins.readDir dir;
-      subdirs = builtins.attrNames (
-        lib.filterAttrs (_name: type: type == "directory") content
-      );
+      subdirs = builtins.attrNames (lib.filterAttrs (_name: type: type == "directory") content);
       # 导入每个子目录的 default.nix (Nix 自动解析为 <dir>/<name>/default.nix)
       imported = map (name: import (dir + "/${name}") extraArgs) subdirs;
     in

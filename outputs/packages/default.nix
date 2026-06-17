@@ -19,4 +19,12 @@ let
     config.allowUnfree = true;
   };
 in
-functions.importSubdirs ./. { inherit lib pkgs inputs system functions; }
+functions.importSubdirs ./. {
+  inherit
+    lib
+    pkgs
+    inputs
+    system
+    functions
+    ;
+}
