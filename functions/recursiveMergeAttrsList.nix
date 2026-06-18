@@ -10,7 +10,7 @@
   返回值:
     合并后的新属性集
   示例:
-    recursiveMergeAttrs [
+    functions.recursiveMergeAttrs [
       { a = 1; b = 2; d = [ 1 2 ]; }
       { e = { foo.bar = true; foo.baz = "baz"; }; }
       { b = 3; c = 4; d = [ 2 3 ]; e = { foo.baz = ""; }; }
