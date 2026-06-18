@@ -21,8 +21,9 @@ let
   inherit (inputs.nixpkgs) lib;
   recursiveMergeAttrs =
     lhs: rhs:
-    lib.recursiveUpdate lhs (
-      builtins.mapAttrs (
+    lib.mergeAttrsList [
+      lhs
+      (builtins.mapAttrs (
         rName: rValue:
         let
           lValue = lhs.${rName} or null;
@@ -38,7 +39,7 @@ let
           lib.unique (lValue ++ rValue)
         else
           rValue
-      ) rhs
-    );
+      ) rhs)
+    ];
 in
 recursiveMergeAttrs
