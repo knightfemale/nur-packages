@@ -24,9 +24,9 @@ inputs:
 let
   inherit (inputs.nixpkgs) lib;
   buildPkgSets =
-    system:
+    system: mainInputs:
     let
-      nixpkgsInputs = lib.filterAttrs (n: _: lib.hasPrefix "nixpkgs" n) inputs;
+      nixpkgsInputs = lib.filterAttrs (n: _: lib.hasPrefix "nixpkgs" n) mainInputs;
     in
     builtins.listToAttrs (
       lib.mapAttrsToList (name: value: {
