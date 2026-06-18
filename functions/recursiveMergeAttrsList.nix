@@ -15,12 +15,12 @@
       { e = { foo.bar = true; foo.baz = "baz"; }; }
       { b = 3; c = 4; d = [ 2 3 ]; e = { foo.baz = ""; }; }
     ]
-  输出:
+  =>
     { a = 1; b = 3; c = 4; d = [ 1 2 3 ]; e = { foo.bar = true; foo.baz = ""; } }
 */
 inputs:
 let
   recursiveMergeAttrs = import ./recursiveMergeAttrs.nix inputs;
-  recursiveMergeAttrsList = builtins.foldl' recursiveMergeAttrs { };
+  function = builtins.foldl' recursiveMergeAttrs { };
 in
-recursiveMergeAttrsList
+function

@@ -13,13 +13,13 @@
     functions.recursiveMergeAttrs
       { a = 1; b = 2; d = [ 1 2 ]; e = { foo.bar = true; foo.baz = "baz"; }; }
       { b = 3; c = 4; d = [ 2 3 ]; e = { foo.baz = ""; }; }
-  输出:
+  =>
     { a = 1; b = 3; c = 4; d = [ 1 2 3 ]; e = { foo.bar = true; foo.baz = ""; } }
 */
 inputs:
 let
   inherit (inputs.nixpkgs) lib;
-  recursiveMergeAttrs =
+  function =
     lhs: rhs:
     lib.mergeAttrsList [
       lhs
@@ -34,7 +34,7 @@ let
           && (lValue.type or null) != "derivation"
           && (rValue.type or null) != "derivation"
         then
-          recursiveMergeAttrs lValue rValue
+          function lValue rValue
         else if builtins.isList lValue && builtins.isList rValue then
           lib.unique (lValue ++ rValue)
         else
@@ -42,4 +42,4 @@ let
       ) rhs)
     ];
 in
-recursiveMergeAttrs
+function
