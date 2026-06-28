@@ -3,14 +3,14 @@
 }:
 let
   kernel = {
-    latest = rec {
+    main = rec {
       name = "zen";
-      version = "7.0.12";
+      version = "7.1.2";
       modDirVersion = "${version}-${name}1";
       url = "https://github.com/zen-kernel/zen-kernel/archive/refs/tags/v${modDirVersion}.tar.gz";
-      sha256 = "sha256-eA8QTmh0Fs94hu5ZM3BZmfvnp6uc+PtAOrXW7j6CtsE=";
+      sha256 = "sha256-vyN0VQhyZVEQSTC5hmv++kbc63KqhlHesec36397hPU=";
     };
-    lqx-latest = rec {
+    lqx = rec {
       name = "lqx";
       version = "7.0.13";
       modDirVersion = "${version}-${name}1";
