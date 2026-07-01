@@ -3,7 +3,7 @@ let
   # 从 nixpkgs 输入中获取 lib 工具库
   inherit (inputs.nixpkgs) lib;
   # 导入公共函数
-  functions = import ../functions inputs;
+  functions = import ./functions inputs;
 in
 inputs.flake-parts.lib.mkFlake { inherit inputs; } {
   systems = [
