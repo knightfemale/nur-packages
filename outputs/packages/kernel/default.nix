@@ -23,7 +23,7 @@
 }:
 let
   # 扫描目录取出所有变体定义文件
-  variantFiles = functions.getDirNixFiles ./.;
+  variantFiles = functions.recursive.collectFilesToList (name: name != "default.nix") ./.;
   # 将单个 .nix 文件展开为 { name, value } 记录列表
   fileToPkgRecords =
     file:

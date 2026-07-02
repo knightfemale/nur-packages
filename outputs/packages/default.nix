@@ -19,7 +19,7 @@ let
     config.allowUnfree = true;
   };
 in
-functions.importSubdirs ./. {
+functions.recursive.collectDefaultFilesToAttrs ./. {
   inherit
     lib
     pkgs

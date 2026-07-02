@@ -12,7 +12,8 @@
   示例:
     functions.checkAttrs "" { foo.enable = lib.types.bool } { foo.enable = "true"; }
      trace: WARNING: foo.enable: expected type bool, but true is string
-    => { foo.enable = "true"; }
+  =>
+    { foo.enable = "true"; }
 */
 inputs:
 let
@@ -33,7 +34,7 @@ let
           if builtins.isAttrs schemaVal && !(schemaVal ? check) then
             function fullKey schemaVal val
           else if !schemaVal.check val then
-            builtins.trace "WARNING: ${fullKey}: expected type ${schemaVal.name}, but ${toString val} is ${builtins.typeOf val}" true
+            builtins.trace "${fullKey}: expected type ${schemaVal.name}, but ${toString val} is ${builtins.typeOf val}" true
           else
             true
         else

@@ -1,1 +1,1 @@
-inputs: (import ./importFilesForAttrs.nix inputs) ./.
+inputs: (import ./recursive/collectFilesToNestedAttrs.nix inputs) ./.
