@@ -24,13 +24,12 @@
 inputs:
 let
   inherit (inputs.nixpkgs) lib;
-  mapAttrsPrime = import ../mapAttrsPrime.nix inputs;
   function =
     system: mainInputs:
     let
       nixpkgsInputs = lib.filterAttrs (n: _: lib.hasPrefix "nixpkgs" n) mainInputs;
     in
-    mapAttrsPrime (name: value: {
+    (import ../mapAttrsPrime.nix inputs) (name: value: {
       name = "pkgs${lib.removePrefix "nixpkgs" name}";
       value = import value {
         inherit system;
