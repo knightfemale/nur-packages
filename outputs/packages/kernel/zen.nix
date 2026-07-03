@@ -12,10 +12,10 @@ let
     };
     lqx = rec {
       name = "lqx";
-      version = "7.0.13";
-      modDirVersion = "${version}-${name}3";
+      version = "7.0.14";
+      modDirVersion = "${version}-${name}2";
       url = "https://github.com/zen-kernel/zen-kernel/archive/refs/tags/v${modDirVersion}.tar.gz";
-      sha256 = "sha256-ahxKr/HMwzB0tDwjHHETjEsVQnO9qjlCSmMGIVnHcR4=";
+      sha256 = "sha256-K4C44JWUVtX+I5hO90phlG7ghoassrz1cMuRZSInoHo=";
     };
   };
 in
