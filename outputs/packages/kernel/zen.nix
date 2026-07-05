@@ -6,9 +6,9 @@ let
     main = rec {
       name = "zen";
       version = "7.1.2";
-      modDirVersion = "${version}-${name}2";
+      modDirVersion = "${version}-${name}3";
       url = "https://github.com/zen-kernel/zen-kernel/archive/refs/tags/v${modDirVersion}.tar.gz";
-      sha256 = "sha256-Vk62dxJ4gEod6XwJit8GaNX6EVgEx6fiZkroPhPuL2s=";
+      sha256 = "sha256-J/3PcI42qMMr+Lqi5dhhGQnT6gK8R+Adt3e2vGkqOBg=";
     };
     lqx = rec {
       name = "lqx";

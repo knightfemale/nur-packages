@@ -5,31 +5,31 @@ let
   kernel = {
     edge = rec {
       name = "xanmod";
-      version = "7.1.2";
+      version = "7.1.3";
       modDirVersion = "${version}-${name}1";
       url = "https://gitlab.com/xanmod/linux/-/archive/${modDirVersion}.tar.bz2";
-      sha256 = "sha256-84IrLkWolh76zo+cLoVRZF45UE5wCu3/8LRAT4bHIzo=";
+      sha256 = "sha256-aZonpggTOW3F336NPPFnmEaZLvl0qdg4bJ/+iKcZtHg=";
     };
     main = rec {
       name = "xanmod";
-      version = "7.0.14";
+      version = "7.1.3";
       modDirVersion = "${version}-${name}1";
       url = "https://gitlab.com/xanmod/linux/-/archive/${modDirVersion}.tar.bz2";
-      sha256 = "sha256-ZxmpxVYcT5xXE+FmKESRXsc7PjncrcqtBNMyOVBFYLo=";
+      sha256 = "sha256-aZonpggTOW3F336NPPFnmEaZLvl0qdg4bJ/+iKcZtHg=";
     };
     lts = rec {
       name = "xanmod";
-      version = "6.18.37";
+      version = "6.18.38";
       modDirVersion = "${version}-${name}1";
       url = "https://gitlab.com/xanmod/linux/-/archive/${modDirVersion}.tar.bz2";
-      sha256 = "sha256-Idp69FqWkTOro522Deddbpt5Eo9SAN4KiXe8rhgn5YM=";
+      sha256 = "sha256-aU893DOsT9V0wNAkwBpVjDAj8GbTP5EoOlUyHJMz2Hs=";
     };
     rt = rec {
       name = "rt-xanmod";
-      version = "6.18.35";
+      version = "6.18.38";
       modDirVersion = "${version}-${name}1";
       url = "https://gitlab.com/xanmod/linux/-/archive/${modDirVersion}.tar.bz2";
-      sha256 = "sha256-L4il1t0KKXPNFEi8uG7Eloumo3v8RR83/Y144IzehVc=";
+      sha256 = "sha256-BS10HbtcOTgjsmQHTxgpRxLh25eqK4VWQnSj2XHAmqQ=";
     };
   };
 in
