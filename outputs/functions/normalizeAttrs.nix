@@ -63,7 +63,17 @@ let
                     "${fullKey} expected type ${schemaVal.type.name}, but ${toString val} is ${builtins.typeOf val}"
                     { ${key} = val; }
                 else
-                  { ${key} = val; }
+                  let
+                    ec = ((schemaVal.type.nestedTypes or { }).elemType or null).check or null;
+                  in
+                  if
+                    ec == null
+                    || !(builtins.isList val || builtins.isAttrs val)
+                    || !(builtins.any (e: !(ec e)) (if builtins.isList val then val else builtins.attrValues val))
+                  then
+                    { ${key} = val; }
+                  else
+                    builtins.warn "${fullKey}: element type mismatch in ${schemaVal.type.name}" { ${key} = val; }
               else
                 # 其他 (写漏叶子的 key 存在时丢弃也不报错, 仅靠外层警告)
                 { }
