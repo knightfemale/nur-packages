@@ -30,6 +30,7 @@ let
   function =
     {
       pkgs,
+      pname,
       version,
       modDirVersion,
       url,
@@ -43,7 +44,7 @@ let
           lib.mergeAttrsList [
             args
             {
-              inherit version modDirVersion;
+              inherit pname version modDirVersion;
               src = fetchurl { inherit url sha256; };
               # 额外的内核补丁列表
               kernelPatches = [ ];
