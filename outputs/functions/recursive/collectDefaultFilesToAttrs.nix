@@ -15,7 +15,6 @@
 */
 inputs:
 let
-  inherit (inputs.nixpkgs) lib;
   function =
     dir: extraArgs:
     let
