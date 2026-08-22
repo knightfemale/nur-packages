@@ -21,6 +21,14 @@ inputs.flake-parts.lib.mkFlake { inherit inputs; } {
           functions
           ;
       };
+      legacyPackages = import ./legacyPackages {
+        inherit
+          lib
+          inputs
+          system
+          functions
+          ;
+      };
     };
   flake = {
     inherit functions;

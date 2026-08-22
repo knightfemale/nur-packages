@@ -10,7 +10,7 @@ let
   # 每个文件返回 { 变体名 = variantData; ... }, 见下方注释
   kernelFiles = functions.recursive.collectFilesToList (name: name != "default.nix") ./.;
   # 展开为 { linux-<文件名>-<变体名> = derivation; ... }
-  packages = builtins.listToAttrs (
+  legacyPackage = builtins.listToAttrs (
     lib.concatMap (
       file:
       let
@@ -51,4 +51,4 @@ let
     ) kernelFiles
   );
 in
-packages
+legacyPackage
