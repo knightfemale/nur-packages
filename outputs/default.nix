@@ -6,7 +6,7 @@ let
   functions = import ./functions inputs;
 in
 inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-  systems = import inputs.systems-default-linux;
+  systems = lib.systems.flakeExposed;
   perSystem =
     {
       system,
@@ -32,6 +32,6 @@ inputs.flake-parts.lib.mkFlake { inherit inputs; } {
     };
   flake = {
     inherit functions;
-    nixosModules = import ./modules { inherit lib; };
+    nixosModules = import ./nixosModules { inherit lib; };
   };
 }

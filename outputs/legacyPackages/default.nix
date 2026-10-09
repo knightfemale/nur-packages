@@ -23,24 +23,27 @@ let
     functions.recursive.collectFilesToList (name: name == "default.nix") ./.
   );
 in
-builtins.listToAttrs (
-  map (
-    path:
-    let
-      # 子目录名 (default.nix 的父目录) 作为包组根名
-      name = lib.baseNameOf (lib.removeSuffix "/default.nix" path);
-    in
-    {
-      inherit name;
-      value = import path {
-        inherit
-          lib
-          pkgs
-          inputs
-          system
-          functions
-          ;
-      };
-    }
-  ) subDirs
+# 过滤空属性集: 子目录可通过返回 {} 放弃在当前 system 下导出
+lib.filterAttrs (_: value: value != { }) (
+  builtins.listToAttrs (
+    map (
+      path:
+      let
+        # 子目录名 (default.nix 的父目录) 作为包组根名
+        name = lib.baseNameOf (lib.removeSuffix "/default.nix" path);
+      in
+      {
+        inherit name;
+        value = import path {
+          inherit
+            lib
+            pkgs
+            inputs
+            system
+            functions
+            ;
+        };
+      }
+    ) subDirs
+  )
 )
