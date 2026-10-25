@@ -10,6 +10,7 @@ let
     ;
 in
 {
+  comfyui-workflow-mcp = final.callPackage ../_packages/comfyui-workflow-mcp { };
   flake-show-ng = final.callPackage ../_packages/flake-show-ng { };
 }
 // lib.optionalAttrs isLinux {
