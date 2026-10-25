@@ -14,8 +14,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
   src = fetchFromGitHub {
     owner = "nix-config";
     repo = "flake-show-ng";
-    rev = "f1cb13c7c45de98a7802b117461cf9c03466d091";
-    hash = "sha256-+o8xjFsf2JTUIiV2Jaw3x8KGtY9+gjQ2dvdw17QzoQk=";
+    rev = "2e32b70ed277c82457904f77dcf64dd242cd3d55";
+    hash = "sha256-kqtRSZOwglgtLd/ggNMMkjF4m3SLc7ObxbCyGYGwfkA=";
   };
 
   cargoHash = "sha256-rmXwEKsugvsmCqu4GdHTH6ckQ39wauny/mR1ZU67Pvo=";
@@ -33,8 +33,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   '';
 
   meta = {
-    description = "Show the complete tree of a flake's outputs.";
-    homepage = "https://github.com/nix-config/flake-show-ng";
+    description = "Show the complete tree of a flake's outputs";
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ knightfemale ];
     mainProgram = "fsn";

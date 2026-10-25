@@ -10,6 +10,7 @@
         lib.mapAttrs
           (name: _: {
             type = "app";
+            meta.description = self'.packages.${name}.meta.description;
             program = lib.getExe self'.packages.${name};
           })
           (
