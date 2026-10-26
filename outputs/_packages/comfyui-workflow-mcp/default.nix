@@ -6,16 +6,16 @@
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "comfyui-workflow-mcp";
-  version = "0.1.0";
+  version = "0.2.0";
 
   src = fetchFromGitHub {
     owner = "Silicon-AI-Garden-Ecosystem";
     repo = "comfyui-workflow-mcp";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-rsuz71vDN+KiJJvhHsotSp5EVDJS0q6gPi/6PvLACKU=";
+    hash = "sha256-WoDYf/mUF3Xo+t5T11jYxI6vXoOv4Z83aMqGBVcZvD8=";
   };
 
-  cargoHash = "sha256-4ZdbOmxFo5wt63nOK++YRa/QMMV5IVgBmaSmFmjqpWA=";
+  cargoHash = "sha256-aNLxvLcTt/hS9KjH272rW4Vyhjqdu8Bf6Fbdj4tWHsk=";
 
   doCheck = true;
 
