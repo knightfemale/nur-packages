@@ -212,6 +212,7 @@ stdenv.mkDerivation (finalAttrs: {
       url = "https://polyformproject.org/licenses/noncommercial/1.0.0";
       free = false;
     };
+    sourceProvenance = [ lib.sourceTypes.fromSource ];
     maintainers = with lib.maintainers; [ knightfemale ];
     mainProgram = "biu";
     platforms = [

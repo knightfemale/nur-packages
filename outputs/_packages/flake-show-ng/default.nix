@@ -34,6 +34,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
 
   meta = {
     description = "Show the complete tree of a flake's outputs";
+    homepage = "https://github.com/nix-config/flake-show-ng";
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ knightfemale ];
     mainProgram = "fsn";
