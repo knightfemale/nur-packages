@@ -1,10 +1,10 @@
 {
   lib,
   stdenv,
+  fetchFromGitHub,
   asar,
   copyDesktopItems,
   electron,
-  fetchFromGitHub,
   fetchPnpmDeps,
   ffmpeg-headless,
   fontconfig,
