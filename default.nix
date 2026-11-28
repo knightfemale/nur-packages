@@ -3,14 +3,25 @@
 }:
 
 let
-  overlay = import ./outputs/_overlays/default.nix;
-  pkgs' = pkgs.extend overlay;
+  overlays = {
+    default = import ./outputs/_overlays/default.nix;
+    deviceTrees = import ./outputs/_overlays/deviceTrees.nix;
+    lib = import ./outputs/_overlays/lib.nix;
+    packages = import ./outputs/_overlays/packages.nix;
+    python314Packages = import ./outputs/_overlays/python314Packages.nix;
+  };
 
-  deviceTrees = pkgs'.lib.recurseIntoPackageSets pkgs'.deviceTreesRaw;
-  python314Packages = pkgs'.lib.recurseIntoPackageSets pkgs'.python314PackagesRaw;
+  pkgs' = pkgs.extend overlays.default;
+
+  inherit (pkgs'.lib)
+    recurseIntoPackageSets
+    ;
+
+  deviceTrees = recurseIntoPackageSets pkgs'.deviceTreesRaw;
+  python314Packages = recurseIntoPackageSets pkgs'.python314PackagesRaw;
 in
 {
-  overlays.default = overlay;
+  inherit overlays;
 
   inherit (pkgs')
     biu
