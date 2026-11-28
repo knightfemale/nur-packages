@@ -5,18 +5,27 @@ let
     isAarch64
     isLinux
     ;
-  python314Packages' = prev.callPackage ../_legacyPackages/python314Packages { };
+
+  deviceTreesRaw = final.callPackage ../_legacyPackages/deviceTrees { };
+  python314PackagesRaw = prev.callPackage ../_legacyPackages/python314Packages { };
 in
 {
+  lib = import ../_lib { lib = prev.lib; };
+
   inherit
-    python314Packages'
+    deviceTreesRaw
+    python314PackagesRaw
     ;
+
   biu = if isLinux then final.callPackage ../_packages/biu { } else null;
+
   comfyui-workflow-mcp = final.callPackage ../_packages/comfyui-workflow-mcp { };
-  deviceTrees =
-    if (isLinux && isAarch64) then final.callPackage ../_legacyPackages/deviceTrees { } else null;
+
+  deviceTrees = if (isLinux && isAarch64) then deviceTreesRaw else null;
+
   flake-show-ng = final.callPackage ../_packages/flake-show-ng { };
+
   python314Packages = prev.python314Packages.override {
-    overrides = _pyFinal: _pyPrev: python314Packages';
+    overrides = _pyFinal: _pyPrev: python314PackagesRaw;
   };
 }

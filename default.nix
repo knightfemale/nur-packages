@@ -5,6 +5,9 @@
 let
   overlay = import ./outputs/_overlays/default.nix;
   pkgs' = pkgs.extend overlay;
+
+  deviceTrees = pkgs'.lib.recurseIntoPackageSets pkgs'.deviceTreesRaw;
+  python314Packages = pkgs'.lib.recurseIntoPackageSets pkgs'.python314PackagesRaw;
 in
 {
   overlays.default = overlay;
@@ -15,14 +18,10 @@ in
     flake-show-ng
     ;
 
-  legacyPackages = {
-    inherit (pkgs')
-      deviceTrees
-      ;
-  }
-  // {
-    python314Packages = pkgs'.python314Packages';
-  };
+  inherit
+    python314Packages
+    deviceTrees
+    ;
 
   nixosModules = {
     openlist = ./outputs/_nixosModules/openlist;
